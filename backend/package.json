@@ -1,0 +1,17 @@
+{
+    "name": "feedMeLisbon-backend",
+    "version": "1.0.0",
+    "description": "Backend for feedMeLisbon app",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "dependencies": {
+        "cors": "^2.8.5",
+        "express": "^4.21.1",
+        "feedMeLisbon-backend": "file:",
+        "mongoose": "^5.12.3",
+        "mysql2": "^3.11.3",
+        "sqlite3": "^5.1.7"
+    }
+}

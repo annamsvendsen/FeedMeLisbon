@@ -1,0 +1,116 @@
+version: '3.8'
+
+services:
+  # Database Service
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: geiksmysql299  # You should replace this with a secure password
+      MYSQL_DATABASE: feedme
+    volumes:
+    # - mysql_data:/var/lib/mysql  endre tilbake til dette for å lagre data mellom container-restart
+    - ./backend/database:/docker-entrypoint-initdb.d
+    ports:
+      - "3307:3306"
+    networks: 
+      - app-network
+
+  #Microservice 1: add rating
+  addrating:
+    build:
+      context: ./backend/addRating # The folder containing Dockerfile for rating-service
+      dockerfile: Dockerfile
+    container_name: addRatingContainer
+    environment:
+      DB_HOST: mysql
+      DB_USER: root
+      DB_PASS: geiksmysql299
+    ports:
+      - "3001:3001"
+    depends_on:
+      - mysql
+    networks:
+      - app-network
+
+  # Microservice 2: add restauant
+  addrestaurant:
+    build:
+      context: ./backend/addRestaurant # The folder containing Dockerfile for addRestaurant
+      dockerfile: Dockerfile
+    container_name: addRestaurantContainer
+    environment:
+      DB_HOST: mysql
+      DB_USER: root
+      DB_PASS: geiksmysql299
+    ports:
+      - "3004:3004"
+    depends_on:
+      - mysql
+    networks:
+      - app-network
+
+#Microservice 3 displayService
+  displayservice:
+    build:
+      context: ./backend/displayService  # The folder containing Dockerfile for addRestaurant
+      dockerfile: Dockerfile
+    container_name: displayServiceContainer
+    environment:
+      DB_HOST: mysql
+      DB_USER: root
+      DB_PASS: geiksmysql299
+    ports:
+      - "3002:3002"
+    depends_on:
+      - mysql
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile  # Path to the Dockerfile for frontend
+    container_name: frontendContainer
+    ports:
+      - "80:80"  # Maps port 3003 on the host to port 80 in the container
+    networks:
+      - app-network
+    depends_on:
+      - addrating
+      - addrestaurant
+      - displayservice  # If your frontend depends on the backend 
+    #environment:
+      #- NODE_ENV=production
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml  # Monterer konfigurasjonsfilen
+    ports:
+      - "9090:9090"  # Eksponer porten for web-grensesnittet til Prometheus
+    networks:
+      - app-network
+
+    # Grafana Service
+  grafana:
+    image: grafana/grafana
+    container_name: grafanaContainer
+    ports:
+      - "3007:3000"  # Bruker port 3007 på vertsmaskinen
+    networks:
+      - app-network
+    depends_on:
+      - prometheus
+
+# Define a shared network for the services to communicate
+networks:
+  app-network:
+    driver: bridge
+
+# Volume to persist MySQL data
+volumes:
+  mysql_data:
+    driver: local
+

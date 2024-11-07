@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>feedMeLisbon</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Feed Me Lisbon</h1>
+        <p>Find the best restaurants in Lisbon for your next meal!</p>
+    </header>
+
+    <section id="meal-selection">
+        <button id="all-btn">All</button>
+        <button id="breakfast-btn"><img src="img/breakfast.jpg" alt="Breakfast.jpg" class="button-image">Breakfast</button>
+        <button id="lunch-btn"><img src="img/brunch.jpg" alt="Brunch.jpg" class="button-image">Lunch</button>
+        <button id="dinner-btn"><img src="img/dinner.jpg" alt="Dinner" class="button-image">Dinner</button>
+        <button id="dessert-btn"><img src="img/dessert.jpg" alt="Dessert.jpg" class="button-image">Dessert</button>
+    </section>
+
+    <section id="restaurants">
+        <div id="restaurants-container">
+            <!-- Restaurants will be displayed here -->
+        </div>
+    </section>
+
+    <div id="add-restaurant-container">
+        <button id="add-restaurant-btn">Add restaurant</button>
+    </div>
+
+<!-- Modal Structure -->
+<div id="add-restaurant-modal" class="modal">
+    <div class="modal-content">
+        <span id="close-btn" class="close-btn">&times;</span>
+        <h2>Add new restaurant</h2>
+        <form id="add-restaurant-form">
+            <label for="restaurant-name">Name:</label>
+            <input type="text" id="restaurant-name" required>
+        
+            <label for="restaurant-location">Location:</label>
+            <input type="text" id="restaurant-location" required>
+        
+            <label for="restaurant-type">Type</label>
+            <input type="text" id="restaurant-type" required>
+            <div class="modal-button-container">
+                <button id="add-restaurant-btn2" type="submit">Add Restaurant</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Rating Modal -->
+<div id="rating-modal" class="modal" style="display:none;">
+    <div class="modal-content">
+        <span id="close-rating-modal" class="close-button">&times;</span>
+        <h2>Rate the restaurant</h2>
+        <form id="rating-form">
+            <label for="rating-value">Rating:</label>
+            <select id="rating-value" name="rating-value" required>
+                <option value="" disabled selected>Select a rating</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+            <input type="hidden" id="restaurant-name2" name="restaurant-name2">
+            <button id="rate-btn2"type="submit">Rate</button>
+        </form>
+    </div>
+</div>
+
+    <script src="app.js"></script>
+</body>
+</html>

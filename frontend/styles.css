@@ -1,0 +1,174 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #ff6b6b;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    margin: 0;
+}
+
+p {
+    margin: 5px;
+}
+
+#meal-selection {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    flex-direction: column;
+    text-align: center; 
+}
+
+button:hover {
+    transform: scale(1.05); 
+}
+
+button.active {
+    background-color: #fe9c9c; 
+    color: white;              
+    border-radius: 5px;      
+}
+
+.button-image {
+    width: 50px; /* Adjust the size as needed */
+    height: 50px; /* Keep aspect ratio */
+    display: block; /* Ensures the image is on its own line */
+    margin: 0 auto; /* Center the image */
+}
+
+.location-image {
+    width: 20px; /* Adjust the size as needed */
+    height: 20px; /* Keep aspect ratio */
+    margin-right: 10px; /* Legg til avstand mellom bildet og teksten */
+}
+
+.location-container {
+    display: flex; /* Use flexbox */
+    align-items: center; /* Center items vertically */
+    justify-content: center;
+}
+
+#restaurants {
+    text-align: center;
+    margin: 20px;
+}
+
+#restaurants-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.restaurant-card {
+    background-color: white;
+    margin: 10px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    width: 300px;
+}
+
+.restaurant-card h3 {
+    margin: 0;
+}
+
+.restaurant-card p {
+    color: #555;
+}
+
+/* Modal styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* Style for close (X) button for modals */
+.close-modal-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff69b4; /* Pink color */
+    cursor: pointer;
+    z-index: 1000; /* Ensure button is above other elements */
+}
+
+.close-modal-btn:hover {
+    color: #ff1493; /* Darker pink on hover */
+    transform: scale(1.1); /* Slightly increase size on hover */
+}
+
+
+#add-restaurant-btn {
+    background-color: #ff6b6b;    
+    color: white;
+    display: flex;
+}
+
+#add-restaurant-container {
+    display: flex;                    /* Use flexbox layout */
+    justify-content: center;          /* Center horizontally */
+    align-items: center;              /* Center vertically (if needed) */
+}
+
+.modal-button-container {
+    display: flex;                    /* Use flexbox layout */
+    justify-content: center;          /* Center horizontally */
+    margin-top: 20px;                /* Add space above the button */
+}
+
+#add-restaurant-btn2 {
+    background-color: #ff6b6b;    
+    color: white;
+    display: flex;
+    justify-content: center;  
+}
+
+.rate-btn {
+    background-color: #ff6b6b;
+    color: white;
+}
+
+#rate-btn2 {
+    background-color: #ff6b6b;
+    color: white;
+}
+

@@ -1,0 +1,16 @@
+global:
+  scrape_interval: 15s  # Hvor ofte Prometheus skal hente metrikker
+
+scrape_configs:
+  - job_name: 'display-service'  # Gi et navn til jobben
+    static_configs:
+      - targets: ['displayservice:3002']  
+
+  - job_name: 'addrating-service'  # Gi et navn til jobben
+    static_configs:
+      - targets: ['addrating:3001'] 
+
+  - job_name: 'addrestaurant-service'  # Gi et navn til jobben
+    static_configs:
+      - targets: ['addrestaurant:3004'] 
+ 
